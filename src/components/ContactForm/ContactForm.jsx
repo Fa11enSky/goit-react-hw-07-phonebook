@@ -1,28 +1,28 @@
 import { useState } from 'react';
 import css from './contactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'store/contactSlice';
+import { addContact } from 'store/operations';
 import { getContacts } from 'store/selectors';
 const ContactForm = ({ updateContacts }) => {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setPhone] = useState('');
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
   const handleInput = ev => {
     if (ev.target.name === 'name') {
-      setName(ev.target.value)
-      return
+      setName(ev.target.value);
+      return;
     }
     if (ev.target.name === 'number') {
-      setNumber(ev.target.value)
-      return
+      setPhone(ev.target.value);
+      return;
     }
   };
   const handleSubmit = ev => {
     ev.preventDefault();
     const newContact = {
       name,
-      number,
+      phone,
     };
     if (
       contacts.find(
