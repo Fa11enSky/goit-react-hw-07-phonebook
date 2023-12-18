@@ -2,11 +2,11 @@ import { useState } from 'react';
 import css from './contactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'store/operations';
-import { getContacts } from 'store/selectors';
+import { selectContacts } from 'store/selectors';
 const ContactForm = ({ updateContacts }) => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
   const handleInput = ev => {
     if (ev.target.name === 'name') {

@@ -1,16 +1,16 @@
 import ContactsItem from 'components/ContactItem/ContactItem';
 import css from './contactList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts, getFilter } from 'store/selectors';
+import { selectContacts, selectFilter } from 'store/selectors';
 import { fetchContacts } from 'store/operations';
 import { useEffect } from 'react';
 const ContactList = () => {
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
-  const filterValue = useSelector(getFilter);
+  const filterValue = useSelector(selectFilter);
   const createRenderListContact = () => {
     return contacts.filter(el => {
       return el.name.toLowerCase().includes(filterValue.toLowerCase());
